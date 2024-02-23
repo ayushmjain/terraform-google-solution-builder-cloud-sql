@@ -20,9 +20,9 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: terraform-google-buj-cloud-sql
+    title: Cloud SQL
     source:
-      repo: https://github.com/terraform-google-modules/terraform-google-sql-db
+      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql
     version: 0.0.1
     actuationTool:
       flavor: Terraform
@@ -45,6 +45,8 @@ spec:
     documentation:
       - title: Cloud SQL
         url: https://cloud.google.com/sql/docs/introduction
+    clientLibraryDocumentationLink: https://cloud.google.com/sql/docs/mysql/admin-api/libraries
+    codeSampleLink: https://cloud.google.com/sql/docs/mysql/samples
     examples:
       - name: simple_example
         location: examples/simple_example
@@ -54,25 +56,38 @@ spec:
         description: Database name
         varType: string
         required: true
+        isEnvVariable: false
       - name: database_user_name
         description: Database user name
         varType: string
         required: true
+        isEnvVariable: false
+        connections:
+        - compositionUnitID: cloud-run
+          output: service_account_full_name
       - name: network_name
         description: Network name
         varType: string
+        default: null
+        isEnvVariable: false
+        connections:
+        - compositionUnitID: compute-network
+          output: network_name
       - name: project
         description: GCP Project
         varType: string
         required: true
+        isEnvVariable: true
       - name: region
         description: GCP Region
         varType: string
         required: true
+        isEnvVariable: true
       - name: zone
         description: GCP Zone
         varType: string
         required: true
+        isEnvVariable: true
     outputs:
       - name: database_connection_name
       - name: database_host

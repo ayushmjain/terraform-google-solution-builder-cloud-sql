@@ -20,9 +20,9 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
-    title: terraform-google-buj-cloud-sql
+    title: Cloud SQL
     source:
-      repo: https://github.com/terraform-google-modules/terraform-google-sql-db
+      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql
   ui:
     input:
       variables:
