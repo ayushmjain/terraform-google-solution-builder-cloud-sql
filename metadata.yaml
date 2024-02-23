@@ -1,0 +1,89 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-buj-cloud-sql
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    title: terraform-google-buj-cloud-sql
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-sql-db
+    version: 0.0.1
+    actuationTool:
+      flavor: Terraform
+      version: ">= 0.13"
+    description:
+      tagline: Cloud SQL is a fully-managed relational database service in GCP.
+      detailed: Cloud SQL is a fully-managed relational database service in GCP.
+      preDeploy: To deploy this blueprint you must have an active billing account and billing permissions.
+    icon: assets/icon.png
+    costEstimate:
+      description: Blueprint cost details
+      url: https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add
+  content:
+    architecture:
+      diagramUrl: https://www.link-to-architecture-diagram.com
+      description:
+        - 1. Architecture description step no. 1
+        - 2. Architecture description step no. 2
+        - 3. Architecture description step no. N
+    documentation:
+      - title: Cloud SQL
+        url: https://cloud.google.com/sql/docs/introduction
+    examples:
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: database_name
+        description: Database name
+        varType: string
+        required: true
+      - name: database_user_name
+        description: Database user name
+        varType: string
+        required: true
+      - name: network_name
+        description: Network name
+        varType: string
+      - name: project
+        description: GCP Project
+        varType: string
+        required: true
+      - name: region
+        description: GCP Region
+        varType: string
+        required: true
+      - name: zone
+        description: GCP Zone
+        varType: string
+        required: true
+    outputs:
+      - name: database_connection_name
+      - name: database_host
+      - name: database_name
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/cloudsql.admin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - serviceusage.googleapis.com
+      - sql-component.googleapis.com
+      - sqladmin.googleapis.com
