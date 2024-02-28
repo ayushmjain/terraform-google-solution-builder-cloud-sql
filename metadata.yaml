@@ -22,26 +22,21 @@ spec:
   info:
     title: Cloud SQL
     source:
-      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql
+      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql.git
+      sourceType: git
     version: 0.0.1
     actuationTool:
       flavor: Terraform
       version: ">= 0.13"
     description:
       tagline: Cloud SQL is a fully-managed relational database service in GCP.
-      detailed: Cloud SQL is a fully-managed relational database service in GCP.
+      detailed: This composition unit creates a Cloud SQL database of type PostgreSQL which can be accessed using a service account.
       preDeploy: To deploy this blueprint you must have an active billing account and billing permissions.
     icon: assets/icon.png
     costEstimate:
       description: Blueprint cost details
-      url: https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add
+      url: https://cloud.google.com/products/calculator?hl=en&dl=CiQxNzNiMzcyYy05YjkwLTQ0MjEtOTMzOS1mY2QzMjE5OWNmMWMQBxokNjczNTk5RjEtOTY3NC00QzQxLTg4RjctRjAzRTA1NUUzQ0E3
   content:
-    architecture:
-      diagramUrl: https://www.link-to-architecture-diagram.com
-      description:
-        - 1. Architecture description step no. 1
-        - 2. Architecture description step no. 2
-        - 3. Architecture description step no. N
     documentation:
       - title: Cloud SQL
         url: https://cloud.google.com/sql/docs/introduction
@@ -56,38 +51,28 @@ spec:
         description: Database name
         varType: string
         required: true
-        isEnvVariable: false
-      - name: database_user_name
-        description: Database user name
-        varType: string
-        required: true
-        isEnvVariable: false
-        connections:
-        - compositionUnitID: cloud-run
-          output: service_account_full_name
       - name: network_name
-        description: Network name
+        description: VPC network name where the Cloud SQL database is created
         varType: string
         default: null
-        isEnvVariable: false
         connections:
         - compositionUnitID: compute-network
           output: network_name
       - name: project
-        description: GCP Project
+        description: GCP project where the Cloud SQL database is created
         varType: string
         required: true
-        isEnvVariable: true
       - name: region
-        description: GCP Region
+        description: GCP region where the Cloud SQL database is created
         varType: string
         required: true
-        isEnvVariable: true
-      - name: zone
-        description: GCP Zone
+      - name: user_service_account_name
+        description: Service account name that accesses the database
         varType: string
         required: true
-        isEnvVariable: true
+        connections:
+        - compositionUnitID: cloud-run
+          output: service_account_full_name
     outputs:
       - name: database_connection_name
       - name: database_host
@@ -98,7 +83,5 @@ spec:
         roles:
           - roles/cloudsql.admin
     services:
-      - cloudresourcemanager.googleapis.com
-      - serviceusage.googleapis.com
       - sql-component.googleapis.com
       - sqladmin.googleapis.com

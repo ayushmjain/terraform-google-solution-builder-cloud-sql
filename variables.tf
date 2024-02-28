@@ -16,25 +16,25 @@
 
 variable "project" {
   type = string
-  description = "GCP Project"
+  description = "GCP project where the Cloud SQL database is created"
 }
+
 variable "region" {
   type = string
-  description = "GCP Region"
+  description = "GCP region where the Cloud SQL database is created"
 }
-variable "zone" {
-  type = string
-  description = "GCP Zone"
-}
+
 variable "network_name" {
   type = string
   default = null
-  description = "Network name"
+  description = "VPC network name where the Cloud SQL database is created"
 }
-variable "database_user_name" {
+
+variable "user_service_account_name" {
   type = string
-  description = "Database user name"
+  description = "Service account name that accesses the database"
 }
+
 variable "database_name" {
   type = string
   description = "Database name"

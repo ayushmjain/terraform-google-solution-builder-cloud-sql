@@ -5,7 +5,7 @@
 Cloud SQL is a fully-managed relational database service in GCP.
 
 ### Detailed
-Cloud SQL is a fully-managed relational database service in GCP.
+This composition unit creates a Cloud SQL database of type PostgreSQL which can be accessed using a service account.
 
 The resources/services/activations/deletions that this module will create/trigger are:
 
@@ -16,42 +16,11 @@ The resources/services/activations/deletions that this module will create/trigge
 ### PreDeploy
 To deploy this blueprint you must have an active billing account and billing permissions.
 
-## Architecture
-![alt text for diagram](https://www.link-to-architecture-diagram.com)
-1. Architecture description step no. 1
-2. Architecture description step no. 2
-3. Architecture description step no. N
-
 ## Documentation
 - [Cloud SQL](https://cloud.google.com/sql/docs/introduction)
 
-## Deployment Duration
-Configuration: X mins
-Deployment: Y mins
-
 ## Cost
-[Blueprint cost details](https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add)
-
-## Usage
-
-Basic usage of this module is as follows:
-
-```hcl
-module "sql-database" {
-  source  = "terraform-google-modules/buj-cloud-sql/google"
-  version = "~> 0.1"
-  project            = "test-project"
-  region             = "us-central1"
-  zone               = "us-central1-a"
-  database_name      = "test-db-name"
-  network_name       = "test-network"
-  database_user_name = "test-db-user"
-}
-
-```
-
-Functional examples are included in the
-[examples](./examples/) directory.
+[Blueprint cost details](https://cloud.google.com/products/calculator?hl=en&dl=CiQxNzNiMzcyYy05YjkwLTQ0MjEtOTMzOS1mY2QzMjE5OWNmMWMQBxokNjczNTk5RjEtOTY3NC00QzQxLTg4RjctRjAzRTA1NUUzQ0E3)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
@@ -59,11 +28,10 @@ Functional examples are included in the
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | database\_name | Database name | `string` | n/a | yes |
-| database\_user\_name | Database user name | `string` | n/a | yes |
-| network\_name | Network name | `string` | `null` | no |
-| project | GCP Project | `string` | n/a | yes |
-| region | GCP Region | `string` | n/a | yes |
-| zone | GCP Zone | `string` | n/a | yes |
+| network\_name | VPC network name where the Cloud SQL database is created | `string` | `null` | no |
+| project | GCP project where the Cloud SQL database is created | `string` | n/a | yes |
+| region | GCP region where the Cloud SQL database is created | `string` | n/a | yes |
+| user\_service\_account\_name | Service account name that accesses the database | `string` | n/a | yes |
 
 ## Outputs
 
@@ -102,10 +70,8 @@ service account with the necessary roles applied.
 A project with the following APIs enabled must be used to host the
 resources of this module:
 
-- Google Cloud Resource Manager API: `cloudresourcemanager.googleapis.com`
 - Google Cloud SQL API: `sql-component.googleapis.com`
 - Google Cloud SQL Admin API: `sqladmin.googleapis.com`
-- Google Cloud Service Usage API: `serviceusage.googleapis.com`
 
 The [Project Factory module][project-factory-module] can be used to
 provision a project with the necessary APIs enabled.

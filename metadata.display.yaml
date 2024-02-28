@@ -22,16 +22,14 @@ spec:
   info:
     title: Cloud SQL
     source:
-      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql
+      repo: https://github.com/ayushmjain/terraform-google-buj-cloud-sql.git
+      sourceType: git
   ui:
     input:
       variables:
         database_name:
           name: database_name
           title: Database Name
-        database_user_name:
-          name: database_user_name
-          title: Database User Name
         network_name:
           name: network_name
           title: Network Name
@@ -41,6 +39,6 @@ spec:
         region:
           name: region
           title: Region
-        zone:
-          name: zone
-          title: Zone
+        user_service_account_name:
+          name: user_service_account_name
+          title: User Service Account Name

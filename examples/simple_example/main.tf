@@ -18,8 +18,7 @@ module "sql-database" {
   source             = "../.."
   project            = var.project_id
   region             = "us-central1"
-  zone               = "us-central1-a"
   database_name      = "test-db-name"
   network_name       = "test-network"
-  database_user_name = "test-db-user"
+  user_service_account_name = "test-sa@${var.project_id}.iam"
 }
