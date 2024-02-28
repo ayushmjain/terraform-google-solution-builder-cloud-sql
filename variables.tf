@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-variable "project" {
+variable "project_id" {
   type = string
-  description = "GCP project where the Cloud SQL database is created"
+  description = "GCP project ID where the Cloud SQL database is created"
 }
 
 variable "region" {

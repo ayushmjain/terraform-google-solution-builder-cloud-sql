@@ -18,7 +18,7 @@ resource "google_sql_database_instance" "main" {
   name             = "${var.database_name}-instance"
   database_version = "POSTGRES_14"
   region           = var.region
-  project          = var.project
+  project          = var.project_id
   settings {
     tier                  = "db-g1-small"
     disk_autoresize       = true
@@ -27,7 +27,7 @@ resource "google_sql_database_instance" "main" {
     disk_type             = "PD_SSD"
     ip_configuration {
       ipv4_enabled    = var.network_name != null ? false : true
-      private_network = var.network_name != null ? "projects/${var.project}/global/networks/${var.network_name}" : null
+      private_network = var.network_name != null ? "projects/${var.project_id}/global/networks/${var.network_name}" : null
     }
     database_flags {
       name  = "cloudsql.iam_authentication"
@@ -38,7 +38,7 @@ resource "google_sql_database_instance" "main" {
 }
 
 resource "google_sql_user" "main" {
-  project         = var.project
+  project         = var.project_id
   name            = var.user_service_account_name
   type            = "CLOUD_IAM_SERVICE_ACCOUNT"
   instance        = google_sql_database_instance.main.name
@@ -46,7 +46,7 @@ resource "google_sql_user" "main" {
 }
 
 resource "google_sql_database" "database" {
-  project         = var.project
+  project         = var.project_id
   name            = var.database_name
   instance        = google_sql_database_instance.main.name
   deletion_policy = "ABANDON"

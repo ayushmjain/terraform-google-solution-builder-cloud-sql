@@ -34,8 +34,8 @@ spec:
           name: network_name
           title: Network Name
         project:
-          name: project
-          title: Project
+          name: project_id
+          title: Project ID
         region:
           name: region
           title: Region

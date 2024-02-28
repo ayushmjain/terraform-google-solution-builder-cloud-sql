@@ -29,7 +29,7 @@ To deploy this blueprint you must have an active billing account and billing per
 |------|-------------|------|---------|:--------:|
 | database\_name | Database name | `string` | n/a | yes |
 | network\_name | VPC network name where the Cloud SQL database is created | `string` | `null` | no |
-| project | GCP project where the Cloud SQL database is created | `string` | n/a | yes |
+| project\_id | GCP project ID where the Cloud SQL database is created | `string` | n/a | yes |
 | region | GCP region where the Cloud SQL database is created | `string` | n/a | yes |
 | user\_service\_account\_name | Service account name that accesses the database | `string` | n/a | yes |
 

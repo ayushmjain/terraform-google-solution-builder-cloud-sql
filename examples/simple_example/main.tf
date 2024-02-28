@@ -16,7 +16,7 @@
 
 module "sql-database" {
   source             = "../.."
-  project            = var.project_id
+  project_id         = var.project_id
   region             = "us-central1"
   database_name      = "test-db-name"
   network_name       = "test-network"

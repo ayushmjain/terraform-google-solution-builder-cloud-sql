@@ -58,8 +58,8 @@ spec:
         connections:
         - compositionUnitID: compute-network
           output: network_name
-      - name: project
-        description: GCP project where the Cloud SQL database is created
+      - name: project_id
+        description: GCP project ID where the Cloud SQL database is created
         varType: string
         required: true
       - name: region
