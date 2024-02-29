@@ -1,4 +1,4 @@
-module github.com/terraform-google-modules/buj-cloud-sql/test/integration
+module github.com/terraform-google-modules/solution-builder-cloud-sql/test/integration
 
 go 1.21
 

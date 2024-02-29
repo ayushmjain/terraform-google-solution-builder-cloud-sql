@@ -1,4 +1,4 @@
-# terraform-google-buj-cloud-sql
+# terraform-google-solution-builder-cloud-sql
 
 ## Description
 ### Tagline

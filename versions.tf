@@ -24,6 +24,6 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/buj-cloud-sql/v0.0.1"
+    module_name = "blueprints/terraform/solution-builder-cloud-sql/v0.0.1"
   }
 }

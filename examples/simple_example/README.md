@@ -1,6 +1,6 @@
 # Simple Example
 
-This example illustrates how to use the `buj-cloud-sql` module.
+This example illustrates how to use the `solution-builder-cloud-sql` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
