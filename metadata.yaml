@@ -77,6 +77,9 @@ spec:
         description: Service account name that accesses the database
         varType: string
         required: true
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-cloud-run
+          output: cloud_run_service_account_name
     outputs:
       - name: database_connection_name
       - name: database_host
