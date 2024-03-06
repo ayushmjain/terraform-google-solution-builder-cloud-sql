@@ -51,12 +51,19 @@ spec:
         description: Database name
         varType: string
         required: true
+      - name: network_dependency
+        description: Dependency on VPC Network
+        varType: any
+        default: null
+        connections:
+        - compositionUnitID: terraform-google-solution-builder-vpc-network
+          output: module_dependency
       - name: network_name
         description: VPC network name where the Cloud SQL database is created
         varType: string
         default: null
         connections:
-        - compositionUnitID: compute-network
+        - compositionUnitID: terraform-google-solution-builder-vpc-network
           output: network_name
       - name: project_id
         description: GCP project ID where the Cloud SQL database is created
@@ -70,13 +77,11 @@ spec:
         description: Service account name that accesses the database
         varType: string
         required: true
-        connections:
-        - compositionUnitID: cloud-run
-          output: service_account_full_name
     outputs:
       - name: database_connection_name
       - name: database_host
       - name: database_name
+      - name: module_dependency
   requirements:
     roles:
       - level: Project

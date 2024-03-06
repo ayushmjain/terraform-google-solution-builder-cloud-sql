@@ -39,3 +39,9 @@ variable "database_name" {
   type = string
   description = "Database name"
 }
+
+variable "network_dependency" {
+  type = any
+  default = null
+  description = "Dependency on VPC Network"
+}

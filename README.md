@@ -28,6 +28,7 @@ To deploy this blueprint you must have an active billing account and billing per
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | database\_name | Database name | `string` | n/a | yes |
+| network\_dependency | Dependency on VPC Network | `any` | `null` | no |
 | network\_name | VPC network name where the Cloud SQL database is created | `string` | `null` | no |
 | project\_id | GCP project ID where the Cloud SQL database is created | `string` | n/a | yes |
 | region | GCP region where the Cloud SQL database is created | `string` | n/a | yes |
@@ -40,6 +41,7 @@ To deploy this blueprint you must have an active billing account and billing per
 | database\_connection\_name | n/a |
 | database\_host | n/a |
 | database\_name | n/a |
+| module\_dependency | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

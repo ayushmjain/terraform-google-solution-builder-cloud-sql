@@ -25,3 +25,8 @@ output "database_host" {
 output "database_name" {
   value = google_sql_database.database.name
 }
+
+output "module_dependency" {
+  value = {}
+  depends_on = [google_sql_database.database, google_sql_database_instance.main, google_sql_user.main]
+}

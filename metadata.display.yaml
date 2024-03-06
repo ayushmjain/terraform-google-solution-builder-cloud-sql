@@ -30,12 +30,15 @@ spec:
         database_name:
           name: database_name
           title: Database Name
+        network_dependency:
+          name: network_dependency
+          title: Network Dependency
         network_name:
           name: network_name
           title: Network Name
-        project:
+        project_id:
           name: project_id
-          title: Project ID
+          title: Project Id
         region:
           name: region
           title: Region

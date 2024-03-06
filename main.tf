@@ -35,6 +35,7 @@ resource "google_sql_database_instance" "main" {
     }
   }
   deletion_protection = false
+  depends_on = [ var.network_dependency ]
 }
 
 resource "google_sql_user" "main" {
