@@ -38,58 +38,71 @@ spec:
       url: https://cloud.google.com/products/calculator?hl=en&dl=CiQxNzNiMzcyYy05YjkwLTQ0MjEtOTMzOS1mY2QzMjE5OWNmMWMQBxokNjczNTk5RjEtOTY3NC00QzQxLTg4RjctRjAzRTA1NUUzQ0E3
   content:
     documentation:
-      - title: Cloud SQL
-        url: https://cloud.google.com/sql/docs/introduction
+    - title: Cloud SQL
+      url: https://cloud.google.com/sql/docs/introduction
     clientLibraryDocumentationLink: https://cloud.google.com/sql/docs/mysql/admin-api/libraries
     codeSampleLink: https://cloud.google.com/sql/docs/mysql/samples
     examples:
-      - name: simple_example
-        location: examples/simple_example
+    - name: simple_example
+      location: examples/simple_example
   interfaces:
     variables:
-      - name: database_name
-        description: Database name
-        varType: string
-        required: true
-      - name: network_dependency
-        description: Dependency on VPC Network
-        varType: any
-        default: null
-        connections:
-        - compositionUnitID: terraform-google-solution-builder-vpc-network
-          output: module_dependency
-      - name: network_name
-        description: VPC network name where the Cloud SQL database is created
-        varType: string
-        default: null
-        connections:
-        - compositionUnitID: terraform-google-solution-builder-vpc-network
-          output: network_name
-      - name: project_id
-        description: GCP project ID where the Cloud SQL database is created
-        varType: string
-        required: true
-      - name: region
-        description: GCP region where the Cloud SQL database is created
-        varType: string
-        required: true
-      - name: user_service_account_name
-        description: Service account name that accesses the database
-        varType: string
-        required: true
-        connections:
-        - compositionUnitID: terraform-google-solution-builder-cloud-run
-          output: cloud_run_service_account_name
+    - name: database_name
+      description: Database name
+      varType: string
+      required: true
+      userInputVariable: true
+    - name: network_dependency
+      description: Dependency on VPC Network
+      varType: any
+      defaultValue: null
+      userInputVariable: false
+      connections:
+      - compositionUnitID: terraform-google-solution-builder-vpc-network
+        type: direct
+        output: module_dependency
+    - name: network_name
+      description: VPC network name where the Cloud SQL database is created
+      varType: string
+      defaultValue: null
+      userInputVariable: true
+      connections:
+      - compositionUnitID: terraform-google-solution-builder-vpc-network
+        type: direct
+        output: network_name
+    - name: project_id
+      description: GCP project ID where the Cloud SQL database is created
+      varType: string
+      required: true
+      userInputVariable: true
+    - name: region
+      description: GCP region where the Cloud SQL database is created
+      varType: string
+      required: true
+      userInputVariable: true
+    - name: user_service_account_name
+      description: Service account name that accesses the database
+      varType: string
+      required: true
+      userInputVariable: true
+      connections:
+      - compositionUnitID: terraform-google-solution-builder-cloud-run
+        type: direct
+        output: cloud_run_service_account_name
     outputs:
-      - name: database_connection_name
-      - name: database_host
-      - name: database_name
-      - name: module_dependency
+    - name: database_connection_name
+      solutionOutputVariable: false
+    - name: database_host
+      solutionOutputVariable: true
+    - name: database_name
+      solutionOutputVariable: false
+    - name: module_dependency
+      solutionOutputVariable: false
   requirements:
     roles:
-      - level: Project
-        roles:
-          - roles/cloudsql.admin
+    - level: Project
+      roles:
+      - roles/cloudsql.admin
     services:
-      - sql-component.googleapis.com
-      - sqladmin.googleapis.com
+    - sql-component.googleapis.com
+    - sqladmin.googleapis.com
