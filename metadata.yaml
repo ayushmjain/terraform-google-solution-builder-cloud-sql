@@ -89,6 +89,35 @@ spec:
       - compositionUnitID: terraform-google-solution-builder-cloud-run
         type: direct
         output: cloud_run_service_account_name
+    - name: disk_size
+      description: The size of data disk in GB
+      varType: number
+      defaultValue: 10
+      userInputVariable: true
+    - name: database_version
+      description: Database version
+      varType: string
+      defaultValue: POSTGRES_14
+      userInputVariable: true
+      oneOf:
+      - MYSQL_5_6
+      - MYSQL_5_7
+      - MYSQL_8_0
+      - POSTGRES_9_6
+      - POSTGRES_10
+      - POSTGRES_11
+      - POSTGRES_12
+      - POSTGRES_13
+      - POSTGRES_14
+      - POSTGRES_15
+      - SQLSERVER_2017_STANDARD
+      - SQLSERVER_2017_ENTERPRISE
+      - SQLSERVER_2017_EXPRESS
+      - SQLSERVER_2017_WEB
+      - SQLSERVER_2019_STANDARD
+      - SQLSERVER_2019_ENTERPRISE
+      - SQLSERVER_2019_EXPRESS
+      - SQLSERVER_2019_WEB
     outputs:
     - name: database_connection_name
       solutionOutputVariable: false

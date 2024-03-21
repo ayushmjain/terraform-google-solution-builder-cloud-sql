@@ -27,6 +27,12 @@ spec:
   ui:
     input:
       variables:
+        database_version:
+          name: database_version
+          title: Database Version
+        disk_size:
+          name: disk_size
+          title: Disk Size
         database_name:
           name: database_name
           title: Database Name
