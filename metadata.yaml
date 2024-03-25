@@ -120,14 +120,19 @@ spec:
       - SQLSERVER_2019_WEB
     outputs:
     - name: database_connection_name
+      description: Cloud SQL database connection name
       solutionOutputVariable: false
     - name: database_host
+      description: Cloud SQL database host
       solutionOutputVariable: true
     - name: database_name
+      description: Cloud SQL database name
       solutionOutputVariable: false
     - name: module_dependency
+      description: Dependency variable that can be used by other modules to depend on this module
       solutionOutputVariable: false
     - name: env_variables
+      description: Environment variables exposed by the Cloud SQL module that can be used by compute resources to connect to the Cloud SQL database
       solutionOutputVariable: false
   requirements:
     roles:
