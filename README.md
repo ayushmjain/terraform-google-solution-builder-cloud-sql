@@ -43,6 +43,7 @@ To deploy this blueprint you must have an active billing account and billing per
 | database\_connection\_name | n/a |
 | database\_host | n/a |
 | database\_name | n/a |
+| env\_variables | n/a |
 | module\_dependency | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

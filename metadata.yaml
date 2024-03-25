@@ -127,6 +127,8 @@ spec:
       solutionOutputVariable: false
     - name: module_dependency
       solutionOutputVariable: false
+    - name: env_variables
+      solutionOutputVariable: false
   requirements:
     roles:
     - level: Project
